@@ -34,6 +34,11 @@ $(function(){
 		$("body").removeClass("hidden");
 	})
 
+	mobileMenu.click(function(){
+		mobileMenu.hide();
+		$("body").removeClass("hidden");
+	})
+
 	//캐로셀 동작구문
 	let carousel_btn = $(".carousel_btn li").not(".carousel_btn li:last-child");
 	let carousel_gallery = $(".gallery li");
