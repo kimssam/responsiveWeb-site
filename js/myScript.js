@@ -23,13 +23,16 @@ $(function(){
 	let close = $(".close");
 	let mobileGnb = $(".mobileGnb li");
 	let mobileMenu = $(".mobileGnb .mobileMenu");
+	let more = $(".mobileGnb .mobileMenu #more_menu");
 
 	hambergerBtn.click(function(){
 		mobileMenu.show();
+		more.hide();
 		$("body").addClass("hidden");
 	})
 
 	close.click(function(){
+		more.show();
 		mobileMenu.hide();
 		$("body").removeClass("hidden");
 	})
@@ -48,6 +51,10 @@ $(function(){
 	carousel_gallery.eq(current).css("left",0);
 
 	carousel_btn.click(function(){
+		if($(".carousel_btn li:last-child").hasClass("play")){
+			carousel_play_btn.hide();
+			carousel_pause_btn.show();
+		}
 		carousel_btn.removeClass("active");
 		$(this).addClass("active");
 		let current = $(this).index();
@@ -70,6 +77,7 @@ $(function(){
 			next.css("left","100%").animate({"left":0},200);
 			carousel_btn.eq(current).addClass("active");
 		},1000);
+
 	}
 
 	move();
@@ -100,13 +108,13 @@ $(function(){
 		clearInterval(clock);
 		carousel_gallery.eq(current).css("left",0);
 		carousel_btn.eq(current).addClass("active");
-
 	})
 
 	carousel_play_btn.click(function(){
 		$(this).hide();
 		carousel_pause_btn.show();
 		move();
+		window.reload();
 	})
 	
 
